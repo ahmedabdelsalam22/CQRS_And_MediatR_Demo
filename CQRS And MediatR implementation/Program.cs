@@ -1,4 +1,8 @@
 using CQRS_And_MediatR_implementation.Data;
+using CQRS_And_MediatR_implementation.Repositories;
+using System.Reflection;
+using MediatR;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,10 @@ builder.Services.AddSwaggerGen();
 
 //// needed services
 builder.Services.AddDbContext<ApplicationDbContext>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 
 var app = builder.Build();
