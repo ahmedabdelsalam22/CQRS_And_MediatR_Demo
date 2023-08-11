@@ -1,4 +1,5 @@
-﻿using CQRS_And_MediatR_implementation.Models;
+﻿using CQRS_And_MediatR_implementation.Commands;
+using CQRS_And_MediatR_implementation.Models;
 using CQRS_And_MediatR_implementation.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +30,18 @@ namespace CQRS_And_MediatR_implementation.Controllers
         {
             var studentDetails = await _mediator.Send(new GetStudentByIdQuery() { Id = studentId });
             return studentDetails;
+        }
+
+        [HttpPost]
+        public async Task<StudentDetails> AddStudentAsync(StudentDetails studentDetails)
+        {
+            var stdDetails = await _mediator.Send(new CreateStudentCommand(
+                studentDetails.StudentName,
+                studentDetails.StudentEmail,
+                studentDetails.StudentAddress,
+                studentDetails.StudentAge
+                ));
+            return stdDetails;
         }
     }
 }
