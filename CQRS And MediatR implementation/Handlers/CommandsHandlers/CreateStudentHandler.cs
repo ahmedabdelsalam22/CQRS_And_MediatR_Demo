@@ -17,7 +17,7 @@ namespace CQRS_And_MediatR_implementation.Handlers.CommandsHandlers
 
         public async Task<StudentDetails> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
-            var sudentDetails = new StudentDetails() 
+            var studentDetails = new StudentDetails() 
             {
                 StudentName = request.StudentName,
                 StudentEmail = request.StudentEmail,
@@ -25,7 +25,7 @@ namespace CQRS_And_MediatR_implementation.Handlers.CommandsHandlers
                 StudentAge = request.StudentAge
             };
 
-            return await _studentRepository.AddStudentAsync(sudentDetails);
+            return await _studentRepository.AddStudentAsync(studentDetails);
         }
     }
 }

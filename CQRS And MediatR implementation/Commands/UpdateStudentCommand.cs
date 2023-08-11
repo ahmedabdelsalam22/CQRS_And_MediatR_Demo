@@ -3,7 +3,7 @@ using MediatR;
 
 namespace CQRS_And_MediatR_implementation.Commands
 {
-    public class UpdateStudentCommand : IRequest<StudentDetails>
+    public class UpdateStudentCommand : IRequest<int>
     {
         public int Id { get; set; }
         public string StudentName { get; set; }
