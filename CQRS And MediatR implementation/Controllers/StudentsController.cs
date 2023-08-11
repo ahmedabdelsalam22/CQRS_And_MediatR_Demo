@@ -23,5 +23,12 @@ namespace CQRS_And_MediatR_implementation.Controllers
             var studentDetails = await _mediator.Send(new GetStudentListQuery());
             return studentDetails;
         }
+
+        [HttpGet("studentId")]
+        public async Task<StudentDetails> GetStudentByIdAsync(int studentId) 
+        {
+            var studentDetails = await _mediator.Send(new GetStudentByIdQuery() { Id = studentId });
+            return studentDetails;
+        }
     }
 }
