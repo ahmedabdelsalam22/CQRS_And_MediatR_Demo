@@ -13,7 +13,7 @@ namespace CQRS_And_MediatR_implementation.Repositories
             _context = context;
         }
 
-        public Task<StudentDetails> AddStudentAsync(StudentDetails studentDetails)
+        public async Task<StudentDetails> AddStudentAsync(StudentDetails studentDetails)
         {
             var result = _context.Students.Add(studentDetails);
             await _context.SaveChangesAsync();
