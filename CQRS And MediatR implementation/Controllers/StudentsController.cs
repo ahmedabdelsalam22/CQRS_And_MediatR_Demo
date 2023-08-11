@@ -43,5 +43,18 @@ namespace CQRS_And_MediatR_implementation.Controllers
                 ));
             return stdDetails;
         }
+
+        [HttpPut]
+        public async Task<int> UpdateStudentAsync(StudentDetails studentDetails)
+        {
+            var isStudentDetailUpdated = await _mediator.Send(new UpdateStudentCommand(
+               studentDetails.Id,
+               studentDetails.StudentName,
+               studentDetails.StudentEmail,
+               studentDetails.StudentAddress,
+               studentDetails.StudentAge));
+
+            return isStudentDetailUpdated;
+        }
     }
 }
