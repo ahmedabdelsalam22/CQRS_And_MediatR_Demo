@@ -1,0 +1,1 @@
+# CQRS And MediatR implementation
