@@ -56,5 +56,11 @@ namespace CQRS_And_MediatR_implementation.Controllers
 
             return isStudentDetailUpdated;
         }
+
+        [HttpDelete]
+        public async Task<int> DeleteStudentAsync(int Id)
+        {
+            return await _mediator.Send(new DeleteStudentCommand() { Id = Id });
+        }
     }
 }
